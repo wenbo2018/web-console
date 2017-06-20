@@ -1,0 +1,37 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/_index.css">
+
+</head>
+<body>
+<div id="app" class="el-app">
+    <el-menu theme="dark" :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+        <el-menu-item index="1" id="logo">Jconf配置管理平台</el-menu-item>
+        <el-menu-item index="3"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
+        <el-menu-item index="3"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
+    </el-menu>
+</div>
+</div>
+</body>
+<script src="../js/vue.js"></script>
+<script src="../js/index.js"></script>
+<script>
+    var Main = {
+        data() {
+            return {
+                activeIndex: '1',
+                activeIndex2: '1'
+            };
+        },
+        methods: {
+            handleSelect(key, keyPath) {
+                console.log(key, keyPath);
+            }
+        }
+    }
+    var Ctor = Vue.extend(Main)
+    new Ctor().$mount('#app')
+</script>
+</html>

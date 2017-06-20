@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/index.css"/>
+</head>
+<body style="margin: 0px;">
+
+<div id="app">
+    <el-menu theme="dark" :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+        <el-menu-item><span style="font-size:x-large;">Jconf配置管理平台</span></el-menu-item>
+        <el-menu-item index="2"><span style="font-size:larger;">系统监控</span></el-menu-item>
+        <el-menu-item index="3"><span style="font-size:larger;">配置管理</span></el-menu-item>
+        <el-menu-item index="4"><span style="font-size:larger;">权限管理</span></el-menu-item>
+        <el-menu-item index="5"><span style="font-size:larger;">系统管理</span></el-menu-item>
+    </el-menu>
+    <div class="line" style="margin-top: 20px;"></div>
+
+
+    <el-form :inline="true" :model="formInline" class="demo-form-inline" style="margin-left: 20px;">
+        <el-form-item label="Key" style="font-size:larger;">
+            <!--<el-input v-model="formInline.user" placeholder="请输入你的key" style="width:400px;"></el-input>-->
+
+
+            <template>
+                <el-select v-model="value9"    multiple filterable="" remote placeholder="根据key或者项目名称搜索"
+                           :remote-method="remoteMethod" :loading="loading" style="width:400px;">
+                    <el-option v-for="item in options4" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                </el-select>
+            </template>
+
+
+        </el-form-item>
+
+
+
+        <el-form-item>
+            <el-button type="success" @click="onSearch" icon="search">搜索</el-button>
+        </el-form-item>
+        <el-form-item>
+            <el-button type="info" @click="dialogFormVisible = true">新增配置</el-button>
+        </el-form-item>
+    </el-form>
+
+
+    <!--新增配置弹出页-->
+    <el-dialog title="新增配置" :visible.sync="dialogFormVisible">
+        <el-form :model="configDataAdd" :rules="rules" ref="configDataAdd" label-width="100px" class="demo-ruleForm">
+            <el-form-item label="Project" prop="projectName" required>
+                <el-input v-model="configDataAdd.projectName"></el-input>
+            </el-form-item>
+
+            <el-form-item label="Key" prop="configKey" required>
+                <el-input v-model="configDataAdd.configKey"></el-input>
+            </el-form-item>
+
+            <el-form-item label="Value" prop="configValue" required>
+                <el-input type="textarea" v-model="configDataAdd.configValue"></el-input>
+            </el-form-item>
+
+            <el-form-item label="部门" prop="department">
+            <el-select v-model="configDataAdd.department" placeholder="请选择部门">
+                <el-option label="支付技术部" value="shanghai"></el-option>
+                <el-option label="金融技术部" value="beijing"></el-option>
+                <el-option label="风控技术部" value="beijing"></el-option>
+            </el-select>
+            </el-form-item>
+
+            <el-form-item label="开发负责人"  required>
+                <el-col :span="11">
+                    <el-form-item prop="developer">
+                        <el-input v-model="configDataAdd.developer" style="width: 95%;"></el-input>
+                    </el-form-item>
+                </el-col>
+                <el-col class="line" :span="2" >Email</el-col>
+                <el-col :span="11">
+                    <el-form-item >
+                        <el-input v-model="configDataAdd.developerEmail" style="width: 100%;"></el-input>
+                    </el-form-item>
+                </el-col>
+            </el-form-item>
+
+            <el-form-item label="配置环境" prop="configEnvironment" required>
+                <el-checkbox-group v-model="configDataAdd.configEnvironment">
+                    <el-checkbox label="Dev/开发环境" name="type"></el-checkbox>
+                    <el-checkbox label="Beta/测试环境" name="type"></el-checkbox>
+                    <el-checkbox label="Pro/线上环境" name="type"></el-checkbox>
+                </el-checkbox-group>
+            </el-form-item>
+
+            <el-form-item>
+                <el-button type="primary" @click="submitForm('configDataAdd')">立即创建</el-button>
+                <el-button @click="resetForm('configDataAdd')">重置</el-button>
+            </el-form-item>
+        </el-form>
+    </el-dialog>
+
+</div>
+
+</body>
+<script src="../js/vue.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/_index.js"></script>
+</html>
