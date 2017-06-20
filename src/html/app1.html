@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/index.css"/>
+</head>
+<body style="margin: 0px;">
+
+<div id="app">
+    <el-menu theme="dark" :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+        <el-menu-item><span style="font-size:x-large;">Jconf配置管理平台</span></el-menu-item>
+        <el-menu-item index="2"><span style="font-size:larger;">系统监控</span></el-menu-item>
+        <el-menu-item index="3"><span style="font-size:larger;">配置管理</span></el-menu-item>
+        <el-menu-item index="4"><span style="font-size:larger;">权限管理</span></el-menu-item>
+        <el-menu-item index="5"><span style="font-size:larger;">系统管理</span></el-menu-item>
+    </el-menu>
+    <div class="line" style="margin-top: 20px;"></div>
+
+
+    <template>
+        <el-table :data="tableData" border style="width: 85%;margin-left:5%;" >
+            <el-table-column label="#" width="60">
+                <template scope="scope">
+                    <span style="margin-left: 10px">{{ scope.row.date }}</span>
+                </template>
+            </el-table-column>
+            <el-table-column label="Key" width="300">
+                <template scope="scope">
+                    <span style="margin-left: 10px">spring.data.sources.jdbc</span>
+                </template>
+            </el-table-column>
+            <el-table-column label="Value" width="80">
+                <template scope="scope">
+                    <el-popover trigger="hover" placement="top">
+                        <p>住址: {{ scope.row.address }}</p>
+                        <div slot="reference" class="name-wrapper">
+                            <el-tag>查看</el-tag>
+                        </div>
+                    </el-popover>
+                </template>
+            </el-table-column>
+            <el-table-column label="类型" width="90">
+                <template scope="scope">
+                    <span style="margin-left: 10px">String</span>
+                </template>
+            </el-table-column>
+
+            <el-table-column label="环境" width="80">
+                <template scope="scope">
+                    <span style="margin-left: 10px">Pro</span>
+                </template>
+            </el-table-column>
+
+            <el-table-column label="负责人" width="150">
+                    <template scope="scope">
+                        <span style="margin-left: 10px">shenwenbo</span>
+                    </template>
+            </el-table-column>
+
+            <el-table-column label="修改时间" width="180">
+                <template scope="scope">
+                    <span>2017-06-20:19:20:00</span>
+                </template>
+            </el-table-column>
+
+            <el-table-column label="历史版本" width="80">
+                <template scope="scope">
+                    <span>1.0.0</span>
+                </template>
+            </el-table-column>
+
+            <el-table-column label="操作">
+                <template scope="scope">
+                    <el-button size="small" @click="handleEdit(scope.$index, scope.row)">修改</el-button>
+                    <el-button size="small" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                </template>
+            </el-table-column>
+        </el-table>
+    </template>
+
+</div>
+
+</body>
+<script src="../js/vue.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/_index.js"></script>
+</html>

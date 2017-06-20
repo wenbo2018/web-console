@@ -15,6 +15,25 @@ var Main = {
                 configEnvironment: [],
             },
 
+            tableData: [{
+                date: '1',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1518 弄'
+            }, {
+                date: '2',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1517 弄'
+            }, {
+                date: '3',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1519 弄'
+            }, {
+                date: '4',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1516 弄'
+            }],
+
+
             // 远程搜索框数据
             options4: [],
             value9: [],
@@ -37,6 +56,7 @@ var Main = {
                 "Utah", "Vermont", "Virginia",
                 "Washington", "West Virginia", "Wisconsin",
                 "Wyoming"],
+
 
             rules: {
                 projectName: [
@@ -62,7 +82,11 @@ var Main = {
                 ]
             }
         };
+
+
+
     },
+
     mounted() {
         this.list = this.states.map(item => {
                 return { value: item, label: item };
@@ -80,6 +104,12 @@ var Main = {
         },
         onConfigAdd() {
 
+        },
+        handleEdit(index, row) {
+            console.log(index, row);
+        },
+        handleDelete(index, row) {
+            console.log(index, row);
         },
         remoteMethod(query) {
             if (query !== '') {
