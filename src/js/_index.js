@@ -15,6 +15,17 @@ var Main = {
                 configEnvironment: [],
             },
 
+            options: [{
+                value: '选项1',
+                label: 'Pro'
+            }, {
+                value: '选项2',
+                label: 'Test'
+            }, {
+                value: '选项3',
+                label: 'Dev'
+            }],
+
             tableData: [{
                 date: '1',
                 name: '王小虎',
@@ -33,6 +44,10 @@ var Main = {
                 address: '上海市普陀区金沙江路 1516 弄'
             }],
 
+            currentPage1: 1,
+            currentPage2: 5,
+            currentPage3: 5,
+            currentPage4: 4,
 
             // 远程搜索框数据
             options4: [],
@@ -110,6 +125,12 @@ var Main = {
         },
         handleDelete(index, row) {
             console.log(index, row);
+        },
+        handleSizeChange(val) {
+            console.log(`每页 ${val} 条`);
+        },
+        handleCurrentChange(val) {
+            console.log(`当前页: ${val}`);
         },
         remoteMethod(query) {
             if (query !== '') {
